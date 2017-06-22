@@ -9,5 +9,12 @@
 
 // * The constructed object should have a `back` property that contains the text on the back of the card.
 
+//dependencies and other files 
+var inquirer = require("inquirer"); 
+var UserSearch = require("./UserSearch.js"); 
+var Questions = require("./questions.js"); 
 
-module.exports = BasicCard; 
+
+
+//module.exports = BasicCard; 
+	//don't need? 
