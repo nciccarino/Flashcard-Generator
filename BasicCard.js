@@ -5,31 +5,35 @@ var Questions = require("./questions.js");
 
 var argv = process.argv[3];  
 
-UserSearch.prototype.printInfo = function() {
-	console.log(this.message + "\nYour answer: " + this.argv + "\nCorrect Answer: " + this.name);
-}
+// UserSearch.prototype.printInfo = function() {
+// 	console.log(this.message + "\nYour answer: " + this.argv + "\nCorrect Answer: " + this.name);
+// }
 
-for (var i = 0; i < questions.length; i++) {
+for (var i = 0; i < Questions.length; i++) {
 
-	//find a way to loop through questions using UserSearch 
+	var output = new UserSearch(Questions[i].text, Questions[i].cloze); 
 
 	inquirer.prompt([
 		{
 			type: "password",
-			name: //UserSearch.cloze, 
-			message: //UserSearch.partial 
+			name: output.cloze, 
+			message: output.partial 
 		}
 
 	]).then(function(user){
-		if(user.cloze === cloze) {
+		if(user.cloze === output.cloze) {
 			console.log("Correct!"); 
-			console.log(text); 
+			console.log(output.text); 
 		}
 
 		else {
+			console.log("")
 			console.log("Incorrect");
-			console.log("The correct answer was " + cloze); 
-			console.log(text); 
+			console.log(""); 
+			console.log("The correct answer was " + output.cloze); 
+			console.log(""); 
+			console.log(output.text); 
+			console.log("--------------------------------------------------------------------------------")
 
 		}
 
