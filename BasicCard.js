@@ -7,7 +7,7 @@ var arr = [];
 var on = 0; 
 
 // arr.prototype.printInfo = function() {
-// 	console.log(this.message + "\nYour answer: " + this.name + "\nCorrect Answer: " + this.arr[on].cloze);
+// 	console.log(this.message + this.name);
 // }
 
 for (var i = 0; i < Questions.length; i++) {
@@ -15,40 +15,88 @@ for (var i = 0; i < Questions.length; i++) {
 	arr.push(output);
 }
 
+var askQuestions = function() {
+
+	if(on < arr.length) {
+
+			inquirer.prompt([
+			{
+				type: "input",
+				name: "answer", 
+				message: arr[on].partial 
+			}
+
+		]).then(function(user){
+
+			if(user.answer === arr[on].cloze) {
+				console.log("")
+				console.log("Correct!"); 
+				console.log("")
+				console.log(arr[on].text); 
+				console.log("--------------------------------------------------------------------------------")
+			}
+
+			else {
+				console.log("")
+				console.log("Incorrect");
+				console.log(""); 
+				console.log("The correct answer was " + arr[on].cloze); 
+				console.log(""); 
+				console.log(arr[on].text); 
+				console.log("--------------------------------------------------------------------------------")
+			}
+
+			on++; 
+
+			askQuestions(); 
+
+		}); //end then function
+
+	}
+
+}
+
+askQuestions(); 
+
+
+//-----------------------------------------------------------------------------------------------------------
+// for (var i = 0; i < Questions.length; i++) {
+// 	done(); 
+// }
+
 //console.log(arr); 
 
-	inquirer.prompt([
-		{
-			type: "input",
-			name: "answer", 
-			message: arr[on].partial 
-		}
+// function done() {
 
-	]).then(function(user){
-		if(user.answer === arr[on].cloze) {
-			console.log("")
-			console.log("Correct!"); 
-			console.log("")
-			console.log(arr[on].text); 
-			console.log("--------------------------------------------------------------------------------")
-		}
+// 		inquirer.prompt([
+// 			{
+// 				type: "input",
+// 				name: "answer", 
+// 				message: arr[on].partial 
+// 			}
 
-		else {
-			console.log("")
-			console.log("Incorrect");
-			console.log(""); 
-			console.log("The correct answer was " + arr[on].cloze); 
-			console.log(""); 
-			console.log(arr[on].text); 
-			console.log("--------------------------------------------------------------------------------")
+// 		]).then(function(user){
 
-		}
+// 			if(user.answer === arr[on].cloze) {
+// 				console.log("")
+// 				console.log("Correct!"); 
+// 				console.log("")
+// 				console.log(arr[on].text); 
+// 				console.log("--------------------------------------------------------------------------------");
+// 				on++;
+// 			}
 
-		// var newInput = new UserSearch(user.message , user.name, user.arr[on].cloze);
-
-		// newInput.printInfo(); 
-
-	}); //end then function
+// 			else {
+// 				console.log("")
+// 				console.log("Incorrect");
+// 				console.log(""); 
+// 				console.log("The correct answer was " + arr[on].cloze); 
+// 				console.log(""); 
+// 				console.log(arr[on].text); 
+// 				console.log("--------------------------------------------------------------------------------");
+// 				on++;
+// 			};
+// }; 
 
 //-----------------------------try later-----------------------------------------------------------------
 // for (var i = 0; i < Questions.length; i++) {
