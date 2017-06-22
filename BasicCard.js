@@ -13,15 +13,17 @@ for (var i = 0; i < Questions.length; i++) {
 
 	var output = new UserSearch(Questions[i].text, Questions[i].cloze); 
 
+}
+
 	inquirer.prompt([
 		{
-			type: "password",
-			name: output.cloze, 
+			type: "input",
+			name: "answer", 
 			message: output.partial 
 		}
 
 	]).then(function(user){
-		if(user.cloze === output.cloze) {
+		if(user.answer === output.cloze) {
 			console.log("Correct!"); 
 			console.log(output.text); 
 		}
@@ -42,4 +44,4 @@ for (var i = 0; i < Questions.length; i++) {
 		//newInput.printInfo(); 
 
 	}); //end then function
-}
+
