@@ -6,18 +6,16 @@ var Questions = require("./questions.js");
 var arr = [];  
 var on = 0; 
 
-// UserSearch.prototype.printInfo = function() {
-// 	console.log(this.message + "\nYour answer: " + this.name + "\nCorrect Answer: " + this.output.cloze);
+// arr.prototype.printInfo = function() {
+// 	console.log(this.message + "\nYour answer: " + this.name + "\nCorrect Answer: " + this.arr[on].cloze);
 // }
 
 for (var i = 0; i < Questions.length; i++) {
-
 	var output = new UserSearch(Questions[i].text, Questions[i].cloze); 
 	arr.push(output);
 }
 
 //console.log(arr); 
-
 
 	inquirer.prompt([
 		{
@@ -27,11 +25,11 @@ for (var i = 0; i < Questions.length; i++) {
 		}
 
 	]).then(function(user){
-		if(user.answer === output.cloze) {
+		if(user.answer === arr[on].cloze) {
 			console.log("")
 			console.log("Correct!"); 
 			console.log("")
-			console.log(output.text); 
+			console.log(arr[on].text); 
 			console.log("--------------------------------------------------------------------------------")
 		}
 
@@ -39,14 +37,14 @@ for (var i = 0; i < Questions.length; i++) {
 			console.log("")
 			console.log("Incorrect");
 			console.log(""); 
-			console.log("The correct answer was " + output.cloze); 
+			console.log("The correct answer was " + arr[on].cloze); 
 			console.log(""); 
-			console.log(output.text); 
+			console.log(arr[on].text); 
 			console.log("--------------------------------------------------------------------------------")
 
 		}
 
-		// var newInput = new UserSearch(user.message , user.name, user.output.cloze);
+		// var newInput = new UserSearch(user.message , user.name, user.arr[on].cloze);
 
 		// newInput.printInfo(); 
 

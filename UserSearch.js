@@ -1,3 +1,4 @@
+
 var UserSearch = function(text, cloze) {
 	this.text = text;
 	this.cloze = cloze;
