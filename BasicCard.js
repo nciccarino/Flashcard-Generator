@@ -1,14 +1,9 @@
-
 var inquirer = require("inquirer"); 
 var UserSearch = require("./UserSearch.js"); 
 var Questions = require("./questions.js"); 
 
 var arr = [];  
 var on = 0; 
-
-// arr.prototype.printInfo = function() {
-// 	console.log(this.message + this.name);
-// }
 
 for (var i = 0; i < Questions.length; i++) {
 	var output = new UserSearch(Questions[i].text, Questions[i].cloze); 
@@ -17,14 +12,17 @@ for (var i = 0; i < Questions.length; i++) {
 
 var askQuestions = function() {
 
-	if(on < arr.length) {
+	if(on === arr.length) {
+		console.log("Game Over!"); 
+	} //end if statement 
 
-			inquirer.prompt([
-			{
-				type: "input",
-				name: "answer", 
-				message: arr[on].partial 
-			}
+	else {
+		inquirer.prompt([
+		{
+			type: "input",
+			name: "answer", 
+			message: arr[on].partial 
+		}
 
 		]).then(function(user){
 
@@ -58,8 +56,8 @@ var askQuestions = function() {
 
 		}); //end then function
 
-	}
+	} //end else statement
 
-}
+} //end askQuestions function 
 
 askQuestions(); 
